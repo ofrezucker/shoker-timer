@@ -1,3 +1,57 @@
-basic.forever(function () {
-	
+input.onButtonPressed(Button.A, function () {
+    basic.showNumber(10)
+    music.playTone(262, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(9)
+    music.playTone(294, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(8)
+    music.playTone(330, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(7)
+    music.playTone(349, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(6)
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(5)
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(4)
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(3)
+    music.playTone(494, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(2)
+    music.playTone(523, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(1)
+    music.playTone(587, music.beat(BeatFraction.Whole))
+    basic.pause(1000)
+    basic.showNumber(0)
+    if (to_shoke_or_not_to_shoke == 0) {
+        music.playSoundEffect(music.builtinSoundEffect(soundExpression.happy), SoundExpressionPlayMode.UntilDone)
+        basic.showIcon(IconNames.Happy)
+        music.playMelody("C5 B A G C5 B A G ", 120)
+        SuperBit.MotorRun(SuperBit.enMotors.M1, 255)
+        basic.pause(2000)
+        SuperBit.MotorRun(SuperBit.enMotors.M1, -255)
+        basic.pause(2000)
+        SuperBit.MotorStopAll()
+        basic.showString("have an electric morning")
+        basic.pause(2000)
+    } else {
+        music.playSoundEffect(music.builtinSoundEffect(soundExpression.sad), SoundExpressionPlayMode.UntilDone)
+        basic.showIcon(IconNames.Sad)
+        music.playMelody("C D E F C D E F ", 120)
+        basic.showString("have a good morning")
+        basic.pause(100)
+        to_shoke_or_not_to_shoke = 0
+    }
 })
+input.onButtonPressed(Button.B, function () {
+    to_shoke_or_not_to_shoke = 1
+})
+let to_shoke_or_not_to_shoke = 0
+to_shoke_or_not_to_shoke = 0
