@@ -33,14 +33,11 @@ input.onButtonPressed(Button.A, function () {
     if (to_shoke_or_not_to_shoke == 0) {
         music.playSoundEffect(music.builtinSoundEffect(soundExpression.happy), SoundExpressionPlayMode.UntilDone)
         basic.showIcon(IconNames.Happy)
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        basic.pause(1000)
+        pins.digitalWritePin(DigitalPin.P0, 1)
         music.playMelody("C5 B A G C5 B A G ", 120)
-        SuperBit.MotorRun(SuperBit.enMotors.M1, 255)
-        basic.pause(2000)
-        SuperBit.MotorRun(SuperBit.enMotors.M1, -255)
-        basic.pause(2000)
-        SuperBit.MotorStopAll()
-        basic.showString("have an electric morning")
-        basic.pause(2000)
+        basic.showString("have a WET morning")
     } else {
         music.playSoundEffect(music.builtinSoundEffect(soundExpression.sad), SoundExpressionPlayMode.UntilDone)
         basic.showIcon(IconNames.Sad)
@@ -55,3 +52,4 @@ input.onButtonPressed(Button.B, function () {
 })
 let to_shoke_or_not_to_shoke = 0
 to_shoke_or_not_to_shoke = 0
+pins.digitalWritePin(DigitalPin.P0, 1)
