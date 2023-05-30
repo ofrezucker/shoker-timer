@@ -5,7 +5,10 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "SuperBit": "github:lzty634158/SuperBit#0a0d6cd2c18804f6b56e944d0c7ff7bd91473ec8"
+        "SuperBit": "github:lzty634158/SuperBit#0a0d6cd2c18804f6b56e944d0c7ff7bd91473ec8",
+        "radio-broadcast": "*",
+        "Module-World": "github:YahboomTechnology/Module-World#4bad43a8128f8529d911b0033e7062d7972a5cf4",
+        "tm1650": "github:YahboomTechnology/tm1650#d74a76c7400108f4658351d4a0e743fc776f3493"
     },
     "files": [
         "main.blocks",
