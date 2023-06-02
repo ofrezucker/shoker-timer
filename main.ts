@@ -1,7 +1,7 @@
-let something = 0
 pins.digitalWritePin(DigitalPin.P0, 1)
 let to_shoke_or_not_to_shoke = 0
 let _ = 0
+let something = 10
 basic.forever(function () {
     if (ModuleWorld_Digital.Button(ModuleWorld_Digital.mwDigitalNum.P12P13, ModuleWorld_Digital.enButton.Press)) {
         to_shoke_or_not_to_shoke = 1
@@ -25,11 +25,10 @@ basic.forever(function () {
                 _ = 1
                 break;
             } else {
-                music.playTone(262, music.beat(BeatFraction.Whole))
-                TM1650.on()
-                TM1650.showNumber(something)
+                music.playTone(494, music.beat(BeatFraction.Whole))
+                basic.showNumber(something)
                 something += -1
-                basic.pause(1000)
+                basic.pause(100)
             }
         }
         if (to_shoke_or_not_to_shoke == 0 && _ == 0) {
@@ -39,6 +38,7 @@ basic.forever(function () {
             basic.pause(1000)
             pins.digitalWritePin(DigitalPin.P0, 1)
             basic.showString("have a WET morning")
+            something = 10
         }
     }
 })
