@@ -1,3 +1,4 @@
+let human = 0
 let waite = 0
 pins.digitalWritePin(DigitalPin.P0, 1)
 let to_shoke_or_not_to_shoke = 0
@@ -16,13 +17,20 @@ basic.forever(function () {
     to_shoke_or_not_to_shoke = 0
     _ = 0
     if (ModuleWorld_Digital.Button(ModuleWorld_Digital.mwDigitalNum.P14P15, ModuleWorld_Digital.enButton.Press) && !(ModuleWorld_Digital.Button(ModuleWorld_Digital.mwDigitalNum.P12P13, ModuleWorld_Digital.enButton.Press))) {
+        human = 0
+        music.playTone(494, music.beat(BeatFraction.Sixteenth))
         for (let index = 0; index < waite; index++) {
             TM1650.showNumber(waite)
-            basic.pause(60000)
+            basic.pause(1000)
             waite += -1
+            if (human == 1) {
+                break;
+            }
         }
         for (let index = 0; index < 10; index++) {
-            if (to_shoke_or_not_to_shoke == 1) {
+            if (to_shoke_or_not_to_shoke == 1 || human == 1) {
+                human = 0
+                waite = 0
                 music.playSoundEffect(music.builtinSoundEffect(soundExpression.sad), SoundExpressionPlayMode.UntilDone)
                 basic.pause(100)
                 to_shoke_or_not_to_shoke = 0
@@ -45,11 +53,19 @@ TM1650.showSring("have a good morning")
             basic.pause(1000)
             pins.digitalWritePin(DigitalPin.P0, 1)
             something = 10
+            waite = 0
         }
     }
 })
 basic.forever(function () {
     if (ModuleWorld_Digital.Button(ModuleWorld_Digital.mwDigitalNum.P14P15, ModuleWorld_Digital.enButton.Press) && ModuleWorld_Digital.Button(ModuleWorld_Digital.mwDigitalNum.P12P13, ModuleWorld_Digital.enButton.Press)) {
-        waite += 1
+        waite += 30
+        basic.pause(1000)
+        TM1650.showNumber(waite)
+    }
+})
+basic.forever(function () {
+    if (ModuleWorld_Digital.PIR(ModuleWorld_Digital.mwDigitalNum.P2P3, ModuleWorld_Digital.enPIR.OPIR) && human == 0) {
+        human = 1
     }
 })
